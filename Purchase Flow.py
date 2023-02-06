@@ -6,12 +6,11 @@ def checkWeaponType(list):
     for i in swords:
         if(i in list):
             return i
-    
     return "none"
 
 def greetCustomer():
     greetings = ["Hello there", "Greetings Customer", "..."]
-    num = random.randint(0,len(greetings))
+    num = random.randint(0,len(greetings)-1)
     print(greetings[num])
 
 def checkSwordType(weaponType,uInput):
@@ -35,13 +34,11 @@ def checkSwordType(weaponType,uInput):
 
 #main
 greetCustomer()
-
 print("What can I help you with?")
-
 
 val = input("I need a: ")
 userInput = val.split(" ")
-
+print(userInput)
 if(len(userInput) <= 2):
     weaponType = checkWeaponType(userInput)
     swordType = checkSwordType(weaponType,userInput)
