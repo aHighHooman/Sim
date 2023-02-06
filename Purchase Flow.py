@@ -1,5 +1,8 @@
 import random
 
+
+
+#process functions
 def checkWeaponType(list):
     ### Sword : {Sword,Estoc,Rapier,greatsword}
     swords = ["sword","estoc","rapier","greatsword"]
@@ -22,7 +25,7 @@ def checkSwordType(weaponType,uInput):
         elif("broad" in uInput):
             return "broad sword"
         else:
-            return "none"
+            return "sword"
     elif(weaponType == "rapier"):
         return weaponType
     elif(weaponType == "estoc"):
@@ -38,7 +41,6 @@ print("What can I help you with?")
 
 val = input("I need a: ")
 userInput = val.split(" ")
-print(userInput)
 if(len(userInput) <= 2):
     weaponType = checkWeaponType(userInput)
     swordType = checkSwordType(weaponType,userInput)
