@@ -1,5 +1,17 @@
-import random
+import random as rand
 
+
+
+#conversational functions 
+def greetCustomer():
+    greetings = ["Hello there", "Greetings Customer", "..."]
+    num = rand.randint(0,len(greetings)-1)
+    print(greetings[num])
+
+def askForNeeds():
+    phrases = ["What do you need today","How can I help you today","Whaddya need","Looking for something?"]
+    num = rand.randint(0,len(phrases)-1)
+    print(phrases[num])
 
 
 #process functions
@@ -10,11 +22,6 @@ def checkWeaponType(list):
         if(i in list):
             return i
     return "none"
-
-def greetCustomer():
-    greetings = ["Hello there", "Greetings Customer", "..."]
-    num = random.randint(0,len(greetings)-1)
-    print(greetings[num])
 
 def checkSwordType(weaponType,uInput):
     if(weaponType == "sword"):
@@ -36,11 +43,12 @@ def checkSwordType(weaponType,uInput):
 
 
 #main
-greetCustomer()
-print("What can I help you with?")
+greetCustomer() #Greet the player can change depending on the mood
+askForNeeds()
 
 val = input("I need a: ")
 userInput = val.split(" ")
+
 if(len(userInput) <= 2):
     weaponType = checkWeaponType(userInput)
     swordType = checkSwordType(weaponType,userInput)

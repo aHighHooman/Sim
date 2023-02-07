@@ -6,9 +6,6 @@ class NPC:
         self.stress = stress
         self.physical_health = physical_health
     
-    def speak(self):
-        return self.name + ": " + self.dialogue
-        
     def update_relationship_status(self, new_status):
         self.relationship_status = new_status
         print(self.name + " is now " + new_status)
