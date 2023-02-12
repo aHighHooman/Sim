@@ -1,13 +1,67 @@
 import random 
 class human:
-    names_M = ["Liam", "Oliver", "Noah", "Elijah", "William", "James", "Benjamin", "Lucas"]
-    names_F = ["Olivia", "Emma", "Charlotte", "Amelia", "Ava", "Sophia", "Isabella", "Mia"]
-    jobs = ["Party Leader", "Blacksmith", "Trainer", "Mayor", "Adventurer", "Hunter", "Alchemist"]
+    names_M = [
+                "Liam", 
+                "Oliver", 
+                "Noah", 
+                "Elijah", 
+                "William", 
+                "James", 
+                "Benjamin", 
+                "Lucas"]
+    names_F = [
+                "Olivia", 
+                "Emma",
+                "Charlotte", 
+                "Amelia", 
+                "Ava", 
+                "Sophia", 
+                "Isabella", 
+                "Mia"]
+    jobs = [
+        "Party Leader", 
+        "Blacksmith", 
+        "Trainer", 
+        "Mayor", 
+        "Adventurer", 
+        "Hunter", 
+        "Alchemist"]
     
     def __init__(self): 
-        self.traitList = ["Heroic", "Will to Live", "Cool Headed", "Observant", "Coward", "Curious", "Prideful", "Prepared"]        
-        self.combat_talents = ["Sword", "Spear", "Dagger", "Archer", "Gunsman", "Large Mana", "Elemental Affinity", "Intruition", "Camouflage", "Artillery Load", "Scouting", "Ambidextrous"]
-        self.generalist_talents = ["Management", "High Adaptability", "High Charisma", "Quick Learner", "Creative", "Large Build","Blacksmithing", "Farmer", "Builder", "Engineer", "Cook"]
+        self.traitList = [
+            "Heroic", 
+            "Will to Live", 
+            "Cool Headed", 
+            "Observant", 
+            "Coward", 
+            "Curious", 
+            "Prideful", 
+            "Prepared"]        
+        self.combat_talents = [
+            "Sword", 
+            "Spear", 
+            "Dagger", 
+            "Archer", 
+            "Gunsman", 
+            "Large Mana", 
+            "Elemental Affinity", 
+            "Intruition", 
+            "Camouflage", 
+            "Artillery Load", 
+            "Scouting", 
+            "Ambidextrous"]
+        self.generalist_talents = [
+            "Management", 
+            "High Adaptability", 
+            "High Charisma", 
+            "Quick Learner", 
+            "Creative", 
+            "Large Build",
+            "Blacksmithing", 
+            "Farmer", 
+            "Builder", 
+            "Engineer", 
+            "Cook"]
         self.talent = []
         self.trait = []
         
@@ -26,6 +80,11 @@ class human:
         #generating talents
         self.generateTalents()
         
+        #generating mental state off battle
+        self.MgenerateOffBattle()
+
+        #generating physical state off battle
+        self.PgenerateOffBattle()
 
 
     #generator functions
@@ -73,6 +132,16 @@ class human:
                     continue
             i = False
 
+    def MgenerateOffBattle(self):
+        self.stress = random.randint(0,60)
+        self.happiness = random.randint(0,80)
+        return 
+
+    def PgenerateoffBattle(self):
+        self.health = 80
+        self.wounds = 0
+        return    
+    
     #Getters
     def getSex(self):
         if(self.sex == "M"):
