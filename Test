@@ -1,1 +1,10 @@
-Bla bla bla bal bal bal bla
+
+
+A combatant can be described by a few numbers:
+- HP
+- OnBattle Mental State = {}
+- OnBattle Physical State = {}
+- Attack = {Type, Damage}
+- Dodge Chance/%
+- Block Chance/%
+- 

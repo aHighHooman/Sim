@@ -1,5 +1,5 @@
 import random as rand
-class NPC:
+class merchant:
     greetings = []
     def __init__(self, name, relationship_status, happiness, stress, physical_health, items, prices):
         self.itemsToSell = []
@@ -17,7 +17,7 @@ class NPC:
             self.itemPrices.append(i)
         
         for i in len(items):
-            self.itemAmount.append(rand.randomInt(5))
+            self.itemAmount.append(rand.randomInt(0,5))
         
         return
     
