@@ -48,3 +48,4 @@ class merchant(human):
         return self.itemList[ID]
     
 
+merchant = merchant([])

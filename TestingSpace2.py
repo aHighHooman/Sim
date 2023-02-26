@@ -1,8 +1,6 @@
-from Templates.MerchantTemplate import merchant
-
+from Templates import MerchantTemplate as m
 import Templates.ObjectTemplate as o
-from Templates.HumanTemplate import human
-
+from HumanTemplate import human
 list = o.weaponList + o.ammoList
 
-Merchant = merchant(list)
+Merchant = m.merchant([])
