@@ -1,16 +1,14 @@
 import random as rand
-from HumanTemplate import human
+from Templates.HumanTemplate import human
+from Templates.ObjectTemplate import item
 class merchant(human):
     greetings = []
-    def __init__(self, items, prices):
-        self.itemsToSell = []
-        self.itemPrices = []
+    def __init__(self, items):
+        self.itemList = []
+        self.itemPrice = []
         self.itemAmount = []
         for i in items:
-            self.itemsToSell.append(i)
-        
-        for i in prices:
-            self.itemPrices.append(i)
+            self.itemList.append(i)
         
         for i in len(items):
             self.itemAmount.append(rand.randomInt(0,5))
@@ -18,21 +16,32 @@ class merchant(human):
         return
     
     def checkAvailability(self, ID):
-        if(ID >= len(self.itemsToSell)):
-            print("I don't have any other items at hand unfotunately...")
-        return self.itemsToSell[ID]
+        if(ID >= len(self.itemList)):
+            print("I don't have such an item...")
+        return self.itemList[ID]
     
     def checkItemPrice(self,ID):
-        return self.itemPrices[ID]
+        print(f"{self.itemList[ID]}'s price is {self.itemList[ID].price}")
+        return self.itemList[ID].price
     
     def greet(self):
+        print("Hello there")
         return
 
     def askForNeeds(self):
+        print("So, what are you looking for?")
+        for i in range(len(self.itemList)):
+            print(f"{i}. {self.itemList[i]}")
         return
     
     def showcaseItem(self,ID):
-        return
+        return self.itemList[ID]
     
-    def sellItem(self,ID):
-        return
+    def sellItem(self, buyer,ID):
+        buyer.money -= self.itemPrice[ID]
+        self.itemAmount[ID] -= 1
+        return self.itemList[ID]
+    
+
+
+print("Hello world")

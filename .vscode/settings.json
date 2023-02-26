@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "'C:\\Users\\SAOFA\\AppData\\Local\\Programs\\Python\\Python39\\Scripts",
+        "./Templates"
+    ]
+}
