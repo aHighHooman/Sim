@@ -62,17 +62,15 @@ class human:
             "Builder", 
             "Engineer", 
             "Cook"]
-        self.talent = []
-        self.trait = []
+        self.talents = []
+        self.traits = []
+        self.skills = []
         
         #generating name + sex
-        self.generateName()
+        self.generateInfo()
 
         #generating growth factor
         self.generateGF() 
-
-        #generating job
-        self.generateJob()
 
         #generating traits
         self.generateTrait()
@@ -81,24 +79,20 @@ class human:
         self.generateTalents()
         
         #generating mental state off battle
-        self.MgenerateOffBattle()
+        self.generateNormState()
 
-        #generating physical state off battle
-        self.PgenerateOffBattle()
+        self.generateReputation()
+
+        self.generateRelationship()
+
+        self.generateLooks()
+
+        self.generateSkils()
+
 
 
     #generator functions
-    def generateJob(self):
-        self.job = human.jobs[random.randint(0,len(human.jobs) - 1)] #Generating Job
-        if(self.job == "Mayor"):
-            human.jobs.remove(self.job)
-
-    def generateTrait(self): 
-        for i in range(3):
-            randomIndex = random.randint(0,len(self.traitList)-1)
-            self.trait.append(self.traitList[randomIndex])
-
-    def generateName(self):
+    def generateInfo(self):
         if(random.randint(0,1) == 1): #generating sex
             self.sex = "M"
             self.name = human.names_M[random.randint(0, len(human.names_M) - 1)]
@@ -107,11 +101,25 @@ class human:
             self.sex = "F"
             self.name = human.names_F[random.randint(0, len(human.names_F) - 1)]
             human.names_F.remove(self.name)
-    
+
     def generateGF(self):
         self.MGF = random.randint(0,10)
         self.PGF = random.randint(0,10)
         self.growth_factor = [self.MGF,self.PGF] #Mental,Physical
+        
+    def generateJob(self):
+        self.job = human.jobs[random.randint(0,len(human.jobs) - 1)] #Generating Job
+        if(self.job == "Mayor"):
+            human.jobs.remove(self.job)
+
+    def generateTrait(self): 
+        for i in range(3): #Generate 3 random traits for the person
+            randomIndex = random.randint(0,len(self.traitList)-1)
+            self.traits.append(self.traitList[randomIndex]) 
+        self.traitType = []
+        self.traitIntensity = []
+        self.traitTarget = []
+        self.traitConditon = []
 
     def generateTalents(self):
         i = True
@@ -131,17 +139,39 @@ class human:
                     self.generalist_talents.remove(typeB)
                     continue
             i = False
+        self.talentDomain = []
+        self.talentRank = []
 
-    def MgenerateOffBattle(self):
+    def generateNormState(self):
         self.stress = random.randint(0,60)
         self.happiness = random.randint(0,80)
+        self.health = 80
         return 
 
-    def PgenerateoffBattle(self):
-        self.health = 80
-        self.wounds = 0
-        return    
+    #Incomplete
+    def generateReputation(self):
+        self.job = []
+        self.charisma = []
+        self.feats = []
+        self.home =  []
+        self.wealth = []
+
+    #Incomplete
+    def generateRelationship(self):
+        self.affection = []
+        self.trust = []
+        self.compatibility = []
     
+    #Incomplete
+    def generateLooks(self):
+        self.looks = []
+    
+    #Incomplete
+    def generateSkills(self):
+        self.skills = []
+        self.skillLevel = []
+        self.skillRank = []
+
     #Getters
     def getSex(self):
         if(self.sex == "M"):

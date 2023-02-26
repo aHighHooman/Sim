@@ -189,23 +189,30 @@ class human:
 #- Block Chance/%
 
 class combatant(human):
-    def __init__(self, damage):
-        self.generate()
-        self.hp = 50
+    def __init__(self):
         self.M_onBattle = {"exc": 0, "con": 0}
         self.P_onBattle = {"str": 0, "agi": 0, "vit": 0, "exh": [0,0], "aff": 0}
-        self.dmg = ["Type", damage]
-        self.blockChance = 0.3
-        self.dodgeChance = 0.1
-        print(f"Name = {self.name}\n")
+        self.generate()
         self.generateStats()
         self.initiatePhrase()
         self.wounded = False
+        print(f"Name = {self.name}\n")
+        print(f"HP = {self.hp}\n")
+        print(f"Damage = {self.dmg[1]}\n")
      
     def generateStats(self):
+        #strength based stats
         self.P_onBattle["str"] = random.randint(0,10)
+        self.dmg = ["type", self.P_onBattle["str"]]
+        
+        #agility based
         self.P_onBattle["agi"] = random.randint(0,10)
-        self.P_onBattle["vit"] = random.randint(0,10)
+        self.blockChance = self.P_onBattle["agi"] / 30
+        self.dodgeChance = self.P_onBattle["agi"] / 90
+
+        #HP based stats
+        self.P_onBattle["vit"] = random.randint(5,10)
+        self.hp = 10 * self.P_onBattle["vit"]
         return
     
     def initiatePhrase(self):
@@ -299,8 +306,8 @@ class combatant(human):
 
 
 #Main
-player1 = combatant(6)
-player2 = combatant(5)
+player1 = combatant()
+player2 = combatant()
 
 print(f"{player1.name} will fight {player2.name} to the death")
 while (player1.alive and player2.alive):

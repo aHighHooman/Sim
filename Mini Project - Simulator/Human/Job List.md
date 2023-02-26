@@ -1,0 +1,8 @@
+- [[Party Leader]]
+- [[Blacksmith]]
+- [[Trainer]]
+- [[Mayor]]
+- [[Adventurer]]
+- [[Hunter]]
+- [[Alchemist]]
+- 

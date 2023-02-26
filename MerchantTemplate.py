@@ -1,15 +1,11 @@
 import random as rand
-class merchant:
+from HumanTemplate import human
+class merchant(human):
     greetings = []
-    def __init__(self, name, relationship_status, happiness, stress, physical_health, items, prices):
+    def __init__(self, items, prices):
         self.itemsToSell = []
         self.itemPrices = []
         self.itemAmount = []
-        self.name = name
-        self.relationship_status = relationship_status
-        self.happiness = happiness
-        self.stress = stress
-        self.physical_health = physical_health
         for i in items:
             self.itemsToSell.append(i)
         
