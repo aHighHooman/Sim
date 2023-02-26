@@ -1,7 +1,6 @@
 import random as rand
-from HumanTemplate import human
-
-class merchant(human):
+from Templates import HumanTemplate as h
+class merchant(h.human):
     greetings = []
     def __init__(self, items):
         self.itemList = []
@@ -10,7 +9,7 @@ class merchant(human):
             self.itemList.append(i)
         
         for i in range(len(items)):
-            self.itemAmount.append(rand.randomInt(0,5))
+            self.itemAmount.append(rand.randint(0,5))
         
         return
     
@@ -33,7 +32,7 @@ class merchant(human):
     def askForNeeds(self):
         print("So, what are you looking for?")
         for i in range(len(self.itemList)):
-            print(f"{i}. {self.itemList[i]}")
+            print(f"{i}. {self.itemList[i].type}")
         
         return
     
@@ -47,5 +46,3 @@ class merchant(human):
         
         return self.itemList[ID]
     
-
-merchant = merchant([])
