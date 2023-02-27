@@ -16,11 +16,12 @@ class merchant(h.human):
     def checkAvailability(self, ID):
         if(ID >= len(self.itemList)):
             print("I don't have such an item...")
-        
-        return self.itemList[ID]
+        else: 
+            print(f"I have {self.itemAmount[ID]} {self.itemList[ID].name}s")
+            return self.itemList[ID]
     
     def checkItemPrice(self,ID):
-        print(f"{self.itemList[ID]}'s price is {self.itemList[ID].price}")
+        print(f"{self.itemList[ID].name}'s price is {self.itemList[ID].price}")
         
         return self.itemList[ID].price
     
@@ -32,7 +33,7 @@ class merchant(h.human):
     def askForNeeds(self):
         print("So, what are you looking for?")
         for i in range(len(self.itemList)):
-            print(f"{i}. {self.itemList[i].type}")
+            print(f"{i+1}. {self.itemList[i].name}")
         
         return
     

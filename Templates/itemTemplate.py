@@ -1,14 +1,14 @@
 class item:
-    def __init__(self, type, classType, useType, price):
+    def __init__(self, itemType, classType, useType, price):
         self.effectiveness = 0                  #amount of (useType) item does
         self.attributes = 0                     #special effects of using the weapon
         self.durability = 0                     #durability
         self.modifier = ""                      #description about weapon make and if its 'named'
         
-        self.type = type
+        self.itemType = itemType
         self.classType = classType              #user type
-        self.useType  = useType                 #protection, damage, healing, buff, debuff
-        self.name = self.modifier + self.type   #full weapon name
+        self.useType  = useType                 #protection, damage, healing, buff/debuff
+        self.name = self.modifier + self.itemType   #full weapon name
         self.price = price
 
 
