@@ -30,9 +30,31 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "a690550b18857ee2",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.1.15"
+              }
+            }
+          },
+          {
+            "id": "38d08140bb74c8bc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Human/Human Composition.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -98,7 +120,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Human/Trait List.md",
+                "file": "Human/Human Composition.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +137,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Human/Trait List.md",
+                "file": "Human/Human Composition.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Human/Trait List.md"
+                "file": "Human/Human Composition.md"
               }
             }
           }
@@ -159,17 +181,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "897f76820b04c8fa",
+  "active": "38d08140bb74c8bc",
   "lastOpenFiles": [
     "Human/Talent List.md",
+    "Human/Trait List.md",
+    "Tools&Weaponry/Walls.md",
+    "Tools&Weaponry/Traps.md",
+    "Tools&Weaponry/Ranged Weapons.md",
+    "Tools&Weaponry/Melee Weapon.md",
+    "Tools&Weaponry/Detection.md",
+    "HUB/HUB Composition.md",
     "Human/Skill List.md",
+    "Human/Social State.md",
     "Human/Human Composition.md",
     "Human/Mental State.md",
     "Human/Physical State.md",
     "Tools&Weaponry/Tools Composition.md",
-    "Compositions.md",
-    "Tools&Weaponry/Walls.md",
-    "Tools&Weaponry/Traps.md",
-    "Tools&Weaponry/Detection.md"
+    "Compositions.md"
   ]
 }

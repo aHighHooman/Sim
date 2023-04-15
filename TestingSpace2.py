@@ -9,5 +9,5 @@ me = m.merchant(list)
 me.greet()
 me.askForNeeds()
 need = int(input()) - 1
-me.checkAvailability(need )
-me.checkItemPrice(need )
+me.checkAvailability(need)
+me.checkItemPrice(need)
