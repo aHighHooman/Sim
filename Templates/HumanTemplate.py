@@ -1,5 +1,63 @@
 import random
 
+
+
+
+
+#map
+h = "h"
+p = "p"
+g = "g"
+
+class GameMap():
+    def __init__(self):
+        self.size = (10,10)
+        self.mapp = [
+            [g,g,g,h,p,p,h,g,g,g],
+            [g,g,g,h,p,p,h,g,g,g],
+            [g,g,g,h,p,p,h,g,g,g],
+            [h,h,h,h,p,p,h,h,h,h],
+            [p,p,p,p,p,p,p,p,p,p],
+            [p,p,p,p,p,p,p,p,p,p],
+            [h,h,h,h,p,p,h,h,h,h],
+            [g,g,g,h,p,p,h,g,g,g],
+            [g,g,g,h,p,p,h,g,g,g],
+            [g,g,g,h,p,p,h,g,g,g],
+        ]
+        return
+
+    def printMap(self):
+        for row in self.mapp:
+            print(row)
+        print("\n\n")
+        return
+
+    def updateMap(self,character):
+        newX = character.coordinate[0]
+        newY = character.coordinate[1]
+        oldX = 5 #for initialization
+        oldY = 5 #for initialization
+        for i in range(len(self.mapp)):
+            if "N" in self.mapp[i]:
+                oldX = i
+                oldY = self.mapp[i].index("N")
+                break
+          
+        self.mapp[oldX][oldY] = character.coordinateContent
+        self.mapp[newX][newY] = "N"   
+        return
+
+
+
+
+
+
+
+
+
+
+
+
 class item:
     def __init__(self,name):
         self.name = name
@@ -9,23 +67,27 @@ class item:
         self.damage = random.randint(1,10)
         self.price = random.randint(10,1000)
 
-#Main
-
 #Weapons
 sword = item("Sword")
 axe =   item("Axe")
 bow =   item("Bow")
 spear = item("Spear")
 pistol= item("Pistol")
-
 #Ammo
 arrow = item("Arrow")
 bullet= item("Bullet")
-
-
+#Lists
 weaponList =    [sword, axe, bow, spear]
 ammoList =      [arrow, bullet]
 
+
+class location:
+    def __init__(self,name,type,description):
+        self.name = name
+        self.type = type
+        self.description = description
+
+smithy1 = location("smithy","business", "A small, dimly lit blacksmith forge with a roaring fire in the hearth.")
 
 class human:
     names_M = [
@@ -94,20 +156,16 @@ class human:
         self.talents = []
         self.traits = []
         self.skills = []
-        
-        self.generateInfo(random.randint(0,1))
-        self.generateGF() 
-        self.generateJob()
-        self.generateTrait()
-        self.generateTalents()
-        self.generateNormalState()
-        self.generateReputation()
-        self.generateRelationship()
-        self.generateLooks()
-        self.generateSkills()
+        self.coordinate = [5,5]
+        self.coordinateContent = "p"
 
-    def generateInfo(self,biology):
-        if(biology == 1): #generating sex
+        self.generateParameters()
+        
+        
+    def generateParameters(self):
+        #Sex
+        biology = random.randint(0,1)
+        if(biology == 1):
             self.sex = "M"
             self.name = random.choice(human.names_M)
             #human.names_M.remove(self.name)
@@ -115,26 +173,54 @@ class human:
             self.sex = "F"
             self.name = random.choice(human.names_F)
             #human.names_F.remove(self.name)
-
-    def generateGF(self):
-        self.MentalGF = random.randint(0,10)
-        self.PhysicalGF = random.randint(0,10)
         
-    def generateJob(self):
+        #Growth Factor
+        self.mentalGF = random.randint(0,10)
+        self.physicalGF = random.randint(0,10)
+        
+        #Job
         self.job = random.choice(human.jobs)
         #if(self.job == "Mayor"):
             #human.jobs.remove(self.job)
-
-    def generateTrait(self): #Type+Intensity
-        for i in range(3): #Generate 3 random traits for the person
+        
+        #Traits
+        for i in range(3): 
             randomTrait = random.choice(self.traitList)
             self.traits.append(randomTrait) 
             self.traitList.remove(randomTrait)
-        
         #self.traitType = []
         #self.traitIntensity = []
         self.traitTarget = random.choice(["self","party"])
 
+        #Talent
+        self.generateTalents()
+    
+        #Mental State
+        self.stress = random.randint(0,60)
+        self.happiness = random.randint(0,80)
+        self.health = 80
+
+        #Reputation
+        self.charisma = random.randint(0,100)
+        self.feats = []
+        #self.home =  []
+        self.wealth = random.randint(0,10**4)
+
+        #Relationships
+        #self.affection = []
+        #self.trust = []
+        #self.compatibility = []
+
+        #Looks
+        #self.looks = []
+
+        #Skill
+        #self.skills = []
+        #self.skillLevel = []
+        #self.skillRank = []
+
+        return
+        
     def generateTalents(self): #Domain+Rank
         i = True
         while(i == True):
@@ -153,60 +239,40 @@ class human:
                     self.general_talents.remove(generalTalent)
                 else: 
                     i = False
-        
-        #self.talentDomain = []
-        #self.talentRank = []
-
-    def generateNormalState(self):
-        self.stress = random.randint(0,60)
-        self.happiness = random.randint(0,80)
-        self.health = 80
-
-    #Home
-    def generateReputation(self):
-        self.charisma = random.randint(0,100)
-        self.feats = []
-        #self.home =  []
-        self.wealth = random.randint(0,10**4)
-
-    #Affection+Trust+Compatibility
-    def generateRelationship(self):
-        self.affection = []
-        self.trust = []
-        self.compatibility = []
-    
-    #Looks
-    def generateLooks(self):
-        #self.looks = []
-        return
-    
-    #Skills + Level + Rank
-    def generateSkills(self):
-        self.skills = []
-        self.skillLevel = []
-        self.skillRank = []
 
     def buyItem(self,item,merchant):
         print(f"{self.name}: Hmm, okay then I'll buy it!")
         merchant.sellItem(self, merchant.itemList.index(item))
 
-    #Getters
-    def getSex(self):
-        if(self.sex == "M"):
-            return "Male"
-        return "Female"
+    def movement(self,refMap,type = "wander"):
+        moveType = {"wander":True,
+                  "target":False}
+        wander = moveType[type]
 
-    def getTrait(self, index):
-        return self.trait[index]
+        if(wander):
+            futureX = self.coordinate[0] + random.randint(-1,1)
+            futureY = self.coordinate[1] + random.randint(-1,1)
+            if (futureX > refMap.size[0]):
+                futureX = refMap.size[0]
+            elif (futureX < 0):
+                futureX = 0
+            if (futureY > refMap.size[1]):
+                futureY = refMap.size[1]
+            elif (futureY < 0):
+                futureY = 0
+        
+            if (refMap.mapp[futureX][futureY] == "N"): #optimizable
+                return
+            else:
+                refMap.mapp[self.coordinate[0]][self.coordinate[1]] = self.coordinateContent
+                self.coordinate[0] = futureX
+                self.coordinate[1] = futureY
+                return
+        else:
+            return
 
-    def getName(self):
-        return self.name
-
-    def getJob(self):
-        return self.job
-
-    def getGrowthFactor(self,type):
-        return self.growth_factor[type]
+        
+   
 
 class merchant(human):
     greetings = []
@@ -279,37 +345,46 @@ class merchant(human):
     def sellItem(self,buyer,ID):
         buyer.wealth -= self.itemList[ID].price
         self.itemAmount[ID] -= 1
-    
+  
+        
 
 
+
+
+
+
+
+
+#Set of Functions
 
 def businessInteractionNPC(customer,merchant):
     merchant.greet()
     merchant.askForNeeds(isPlayer = False)
-    itemDesired = random.choice(weaponList)
+    itemDesired = random.choice(merchant.itemList)
     itemID = weaponList.index(itemDesired)
-    newItemDesired = itemDesired
-    newItemID = itemID
-    print(f"{customer1.name}: I would like a {itemDesired.name}")
+    
+    print(f"{customer.name}: I would like a {itemDesired.name}")
     while (merchant.checkAvailability(itemID) == 0): #Possible infinite Loop if merchant isn't configured properly
-        newItemDesired = random.choice(weaponList)
-        newItemID = merchant.itemList.index(newItemDesired)
-        while(newItemID == itemID):
-            newItemDesired = random.choice(weaponList)
-            newItemID = merchant.itemList.index(newItemDesired)
-        
-        print(f"{customer.name}: oh.. then how about a {newItemDesired.name}?")
-    itemDesired = newItemDesired
-    itemID = newItemID
+        oldItemID = itemID
+        ItemDesired = random.choice(weaponList)
+        ItemID = merchant.itemList.index(ItemDesired)
     merchant.showcaseItem(itemID)  
+    
     if(merchant.checkItemPrice(itemID) <= customer.wealth):
         customer.buyItem(itemDesired,merchant1)
     else:
         print(f"{customer.name}: Aww, guess I gotta save more money :(.")
 
 
-merchant1 = merchant(weaponList)
-customer1 = human()
-businessInteractionNPC(customer1,merchant1)
 
+#game loop
 
+nat = human()
+game_map = GameMap()
+game_map.updateMap(nat)
+game_map.printMap()
+for time in range(1,10):
+    nat.movement(game_map)
+    game_map.updateMap(nat)
+    game_map.printMap()
+    
